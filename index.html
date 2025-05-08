@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Enhanced Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; connect-src https://open.er-api.com https://*.exchangerate-api.com; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'self'; form-action 'self';">
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="no-referrer">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
+    <meta name="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+    <title>美元/台幣匯率計算器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>美元/台幣匯率計算器</h1>
+
+
+
+        <div class="card">
+            <div class="input-group">
+                <label for="usd-amount" class="editable">美元金額:</label>
+                <div class="input-wrapper">
+                    <span class="currency-symbol">$</span>
+                    <input type="number" id="usd-amount" class="editable-field" placeholder="輸入美元金額" step="0.01" min="0" style="padding-left: 25px;">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="current-rate" class="locked">目前匯率:</label>
+                <div class="input-wrapper">
+                    <input type="number" id="current-rate" class="locked-field" placeholder="載入中..." step="0.01" min="0" value="33.00" readonly>
+                    <span class="currency-symbol">TWD</span>
+                </div>
+                <div class="refresh-rate">
+                    <button id="refresh-rate-btn" title="更新匯率">↻</button>
+                    <span id="rate-status">即時匯率</span>
+                    <span id="rate-updated-time" class="update-time"></span>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="potential-rate" class="editable">潛在匯率:</label>
+                <div class="input-wrapper">
+                    <input type="number" id="potential-rate" class="editable-field" placeholder="例如: 29" step="0.01" min="0" value="29">
+                    <span class="currency-symbol">TWD</span>
+                </div>
+            </div>
+
+            <button id="calculate-btn">計算</button>
+
+            <div class="results" id="results">
+                <div class="result-card" id="current-value-card">
+                    <h3>目前價值</h3>
+                    <p id="current-value">--</p>
+                </div>
+
+                <div class="result-card" id="potential-value-card">
+                    <h3>潛在價值</h3>
+                    <p id="potential-value">--</p>
+                </div>
+
+                <div class="result-card" id="difference-card">
+                    <h3>差額</h3>
+                    <p id="difference">--</p>
+                </div>
+
+                <div class="result-card" id="percentage-card">
+                    <h3>百分比變化</h3>
+                    <p id="percentage">--</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>關於此工具</h2>
+            <p>此計算器幫助您了解美元/台幣匯率變化可能如何影響您的貨幣價值。輸入您的美元金額，並比較目前匯率與潛在未來匯率，以查看差異。</p>
+            <p class="update-info">匯率資料每日更新一次。如果您看到「匯率已更新」訊息，表示匯率已經更新。</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>匯率計算器 | 數值僅供參考</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
