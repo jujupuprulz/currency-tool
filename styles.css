@@ -124,6 +124,11 @@ input[type="number"].locked-field {
     color: #5f6368;
 }
 
+/* Special styling for USD input with dollar sign */
+.input-wrapper input.usd-input {
+    padding-left: 30px !important; /* Ensure there's space for the dollar sign */
+}
+
 /* Hide spinner for Chrome, Safari, Edge, Opera */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
@@ -147,6 +152,7 @@ input[type="number"]:focus {
     left: 10px;
     padding-right: 5px;
     z-index: 1;
+    pointer-events: none; /* Make the symbol non-interactive so it doesn't block input */
 }
 
 .input-wrapper .currency-symbol:last-child {
